@@ -1,0 +1,77 @@
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+  <div class="auth-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="login-card card-body auth-body">
+          <form class="md-float-material" #loginFrom="ngForm" (ngSubmit)="onSubmit(loginFrom)">
+            
+            <div class="auth-box">
+                <div class="text-center">
+                    <img src="assets/images/auth/logo-dark.png" class="logo" alt="logo.png">
+                  </div>
+              <div class="row m-b-20">
+                <div class="col-md-12">
+                  <h3 class="text-center txt-primary">Sign In</h3>
+                </div>
+              </div>
+              <hr/>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Your Email Address" [(ngModel)]="email" #useremail="ngModel" required minlength="3" maxlength="32" email >
+                <div *ngIf="useremail.invalid && (useremail.dirty || useremail.touched)"
+                    class="alert alert-danger">
+                <div *ngIf="useremail.errors.email">
+                  Email is not correct.
+                </div>
+                <div *ngIf="useremail.errors.required">
+                    Email is required.
+                </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" required placeholder="Password" [(ngModel)]="password" minlength="6" #userpassword="ngModel">
+                <div *ngIf="userpassword.invalid && (userpassword.dirty || userpassword.touched)"
+                    class="alert alert-danger">
+                <div *ngIf="userpassword.errors.minlength">
+                  Password should contain atleast 6 characters.
+                </div>
+                <div *ngIf="userpassword.errors.required">
+                  Password is required.
+                </div>
+                </div>
+              </div>
+              <div class="row m-t-25 text-left">
+                <div class="col-sm-6 col-xs-12" style="font-size: 12px">
+                  <div class="checkbox-fade fade-in-primary">
+                    <label>
+                      <input type="checkbox" value="">
+                      <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                      <span class="text-inverse">Remember me</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 forgot-phone text-right" style="font-size: 12px">
+                  <a routerLink="/authentication/forgot" class="text-right f-w-600 text-inverse"> Forgot Your Password?</a>
+                </div>
+              </div>
+              <div class="row m-t-30">
+                <div class="col-md-12">
+                  <button  type="submit" [disabled]="loginFrom.pristine" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" >Sign in</button>
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-md-10">
+                  <p class="text-inverse text-left m-b-0">New User&nbsp;<a routerLink="/registration">Sign Up</a>&nbsp;here.</p>
+                  
+                </div>
+                <!-- <div class="col-md-2">
+                  <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
+                </div> -->
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
